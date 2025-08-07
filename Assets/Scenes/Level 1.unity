@@ -17147,6 +17147,7 @@ GameObject:
   - component: {fileID: 1805293318}
   - component: {fileID: 1805293317}
   - component: {fileID: 1805293316}
+  - component: {fileID: 1805293319}
   m_Layer: 0
   m_Name: SpecialItem
   m_TagString: Untagged
@@ -17256,6 +17257,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1602830028}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1805293319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805293315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419122735a223e647b509c113a3f5058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uid: 1001
+  index: 1
+  itemName: "\u53E3\u6C34"
 --- !u!1 &2071489300
 GameObject:
   m_ObjectHideFlags: 0
@@ -17455,6 +17471,10 @@ PrefabInstance:
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 783455213}
+    - target: {fileID: 9083451192490651324, guid: 882e4774b62795e4db66b9ae9ef7d2d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17470,7 +17490,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &706613607950415816 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 6137212512836822528, guid: 882e4774b62795e4db66b9ae9ef7d2d2, type: 3}
+  m_CorrespondingSourceObject: {fileID: 9083451192490651324, guid: 882e4774b62795e4db66b9ae9ef7d2d2, type: 3}
   m_PrefabInstance: {fileID: 706613607950415814}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2607148592174879942
