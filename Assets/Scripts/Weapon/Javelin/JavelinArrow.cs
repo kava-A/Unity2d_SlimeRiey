@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// ±Í«πÕ∂÷¿ŒÔ
+/// </summary>
 public class JavelinArrow : Weapon
 {
     private float destroyTime = 3f;

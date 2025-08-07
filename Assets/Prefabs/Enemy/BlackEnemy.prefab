@@ -180,8 +180,8 @@ MonoBehaviour:
   health: 10
   moveSpeed: 15
   jumpForce: 20
-  collisionDamage: 15
-  player: {fileID: 0}
+  collisionDamage: 10
+  player: {fileID: 4957096161287551124, guid: 882e4774b62795e4db66b9ae9ef7d2d2, type: 3}
 --- !u!50 &5019959261041585314
 Rigidbody2D:
   serializedVersion: 4
