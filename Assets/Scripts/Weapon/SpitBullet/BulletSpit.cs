@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 口水子弹
+/// </summary>
 public class BulletSpit : Weapon
 {
     [SerializeField, Tooltip("子弹粒子特效，属于子物体，且未启用状态")] public GameObject[] effect;

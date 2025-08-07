@@ -34,6 +34,8 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("Jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+
+
     }
     /// <summary>
     /// Íæ¼ÒÒÆ¶¯

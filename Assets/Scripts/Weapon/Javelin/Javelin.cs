@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ฑ๊วน
+/// ฑ๊วนนฅป๗
 /// </summary>
 public class Javelin : MonoBehaviour
 {

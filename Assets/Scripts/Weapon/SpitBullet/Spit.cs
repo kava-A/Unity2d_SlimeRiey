@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 史莱姆口水攻击
+/// </summary>
 public class Spit : MonoBehaviour
 {
     [SerializeField, Tooltip("口水预制体")] private GameObject spitPrefab;
@@ -11,7 +14,7 @@ public class Spit : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.F) && Time.time >= nextFireTime)
+        if (Input.GetMouseButton(1) && Time.time >= nextFireTime)
         {
             Attack();
         }
