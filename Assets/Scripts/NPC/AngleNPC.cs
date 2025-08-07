@@ -17,17 +17,11 @@ public class AngleNPC : NPCBasic
     protected override void Update()
     {
         base.Update();
-
-        if (!canTalk) return;
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)&&canTalk)
         {
             UIManager.Instance.SetTalkContent(npcName, talkContents);
         }
-        if (UIManager.Instance.TalkFinished )
-        {
-            specialItem.SetActive(true);
-            specialItem.transform.position=transform.position;
-        }
+        
 
     }
     private void OnTriggerExit2D(Collider2D collision)
