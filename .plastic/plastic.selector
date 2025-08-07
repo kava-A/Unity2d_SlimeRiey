@@ -1,0 +1,4 @@
+repository "SlimeRiey@tj_nomal6@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
