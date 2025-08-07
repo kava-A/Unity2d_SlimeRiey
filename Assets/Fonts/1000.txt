@@ -4,4 +4,4 @@
 赐予
 吐险
 //常用字符
-1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`-=[/];',.\~!@#$%^&*()_+{}|:："<>?、，。·ˉˇ¨〃々—～‖…‘’“”〔〕〈 〉《》「」『』〖〗【】±×÷∧∨∑∏∪∩∈√⊥ ∥ ∠⌒⊙∫∮ ≡≌≈∽∝≠≮≯≤≥∞∶
+1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`-=[/];',.\~!@#$%^&*()_+{}|:："<>?、，。·ˉˇ¨〃々_—～‖…‘’“”〔〕〈 〉《》「」『』〖〗【】±×÷∧∨∑∏∪∩∈√⊥ ∥ ∠⌒⊙∫∮ ≡≌≈∽∝≠≮≯≤≥∞∶

@@ -7,6 +7,17 @@ public class WeaponController : MonoBehaviour
     [SerializeField] private List<GameObject> weapons = new List<GameObject>();
 
     private int currentWeaponIndex = 0;
+    private void Start()
+    {
+        foreach(GameObject weapon in weapons)
+        {
+            weapon.SetActive(false);
+        }
+    }
+    public void GetWeaponIndex(int index)
+    {
+        weapons[index].SetActive(true);
+    }
     private void Update()
     {
         Mathf.Clamp(currentWeaponIndex, 0, weapons.Count - 1);//限制武器索引范围在0到武器数量-1之间
@@ -18,11 +29,11 @@ public class WeaponController : MonoBehaviour
         {
             currentWeaponIndex += 1;
         }
-        ActivateWeapon(currentWeaponIndex);
+        //ActivateWeapon(currentWeaponIndex);
     }
 
     private void ActivateWeapon( int index)
     {
-        weapons[index].SetActive(true);
+        
     }
 }
