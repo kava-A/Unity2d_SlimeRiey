@@ -90,6 +90,7 @@ public class BossEnemy : Enemy
     /// </summary>
     protected override void Dead()
     {
+        base.Dead();
         isDead = true;
         StopCoroutine(EnemyMove());
         gameObject.SetActive(false);

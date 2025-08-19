@@ -14,6 +14,7 @@ public class ItemBase : MonoBehaviour
         {
             player = collision.gameObject;
             ActivateItem();
+            Destroy(gameObject);
         }
     }
     private void ActivateItem()

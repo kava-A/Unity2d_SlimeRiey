@@ -10,6 +10,11 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField, Tooltip("敌人移动速度")] protected float jumpForce;
     [SerializeField, Tooltip("敌人碰撞伤害")] protected float collisionDamage;
 
+    [Header("敌人奖励")]
+    [SerializeField,Tooltip("敌人被击杀后的数量统计")] protected int killCount;
+    [SerializeField, Tooltip("敌人被击杀后获得的金币")] protected int enemyPrice;
+
+
     [SerializeField] protected GameObject player;
     protected Rigidbody2D rb;
     private void Awake()
@@ -22,7 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
     protected virtual void Dead()
     {
-
+        GameManager.Instance.AddKillCount(killCount, enemyPrice);
         //gameObject.SetActive(false);
 
     }
