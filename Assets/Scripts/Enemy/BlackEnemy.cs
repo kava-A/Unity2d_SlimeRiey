@@ -41,10 +41,9 @@ public class BlackEnemy : Enemy
     /// </summary>
     protected override void Dead()
     {
-        
+        base.Dead();
         StopCoroutine(EnemyMove());
         gameObject.SetActive(false);
-        //base.Dead();
         
     }
 }

@@ -8,7 +8,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [SerializeField, Tooltip("血条UI")] private Slider hpSlider;
 
     [Header("玩家生命值")]
-    [HideInInspector,Tooltip("当前血量")] public float currenthealth;
+    [Tooltip("当前血量")] public float currenthealth;
     [Tooltip("最大血量")] public float maxHealth;
     [Tooltip("每秒回血值")] public float healthRegen;
 
@@ -28,6 +28,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public void Healing(float amount)
     {
         currenthealth = Mathf.Min(currenthealth + amount, maxHealth);//玩家血量不会超过最大血量
+        GetParcentage();
     }
     /// <summary>
     /// 治疗
@@ -37,6 +38,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     {
         if (amount <= 0) { Debug.Log("回血值异常"); return; }
         currenthealth = Mathf.Min(currenthealth + amount, maxHealth);
+        Debug.Log($"治疗前血量: {currenthealth}, 治疗量: {amount}, 最大血量: {maxHealth}");
+        GetParcentage();
     }
 
     /// <summary>
