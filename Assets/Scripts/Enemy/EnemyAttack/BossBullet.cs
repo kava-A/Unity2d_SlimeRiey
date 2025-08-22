@@ -20,14 +20,14 @@ public class BossBullet : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(SetVelocityAfterFrame());
-        Debug.Log("发射方向：" + shootDirection + "，速度：" + (shootDirection * speed));
+        //Debug.Log("发射方向：" + shootDirection + "，速度：" + (shootDirection * speed));
         rb.velocity = shootDirection * speed;
     }
     IEnumerator SetVelocityAfterFrame()
     {
         yield return null; // 等一帧，确保SetShootDirection已执行
         rb.velocity = shootDirection * speed;
-        Debug.Log("延迟后设置的速度：" + rb.velocity);
+       // Debug.Log("延迟后设置的速度：" + rb.velocity);
     }
     /// <summary>
     /// 设置子弹射击方向

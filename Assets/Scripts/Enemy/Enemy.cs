@@ -43,8 +43,8 @@ public class Enemy : MonoBehaviour, IDamageable
         if (health > 0)
         {
             health = Mathf.Max(health -= amount, 0);
-            Debug.Log(health.ToString("F2"));
-            Debug.Log(amount.ToString("F2"));
+            //Debug.Log(health.ToString("F2"));
+            //Debug.Log(amount.ToString("F2"));
             if (health <= 0)
             {
                 Dead();

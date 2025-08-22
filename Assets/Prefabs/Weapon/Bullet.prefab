@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: "\u53E3\u6C34"
-  damage: 2
+  damage: 3
   range: 7
   speed: 30
   attackCooldown: 0

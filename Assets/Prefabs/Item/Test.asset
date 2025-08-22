@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   id: 1002
-  itemName: "\u6D4B\u8BD5"
-  description: "\u8FD9\u662F\u4E00\u4E2A\u6D4B\u8BD5\u7269\u54C1"
+  itemName: "\u53EC\u5524\u72EC\u89D2\u53F2\u83B1\u59C6"
+  description: "\u5B83\u4F1A\u7ED9\u4F60\u89E3\u9501\u6807\u67AA"
   price: 10
   maxStack: 999
   type: 3

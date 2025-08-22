@@ -3,19 +3,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+// 游戏设置类型枚举
+public enum SettingType
+{
+    FOV,        // 视野
+    AudioVolume,// 音量
+    FrameRate   // 帧率
+}
 
+// 设置变更事件的数据类（传递设置类型和值）
+public class SettingChangedEventArgs : EventArgs
+{
+    public SettingType settingType;
+    public float floatValue;       // 用于FOV、音量等浮点值
+    public int intValue;           // 用于帧率等整数值
+
+    // 构造函数（根据类型传递不同值）
+    public SettingChangedEventArgs(SettingType type, float value)
+    {
+        settingType = type;
+        floatValue = value;
+    }
+
+    public SettingChangedEventArgs(SettingType type, int value)
+    {
+        settingType = type;
+        intValue = value;
+    }
+}
 public static class EventDefine
 {
-    private static event Action _onTalkFinished;
+    // 定义设置变更事件（携带设置类型和值）
+    public static event EventHandler<SettingChangedEventArgs> OnSettingChanged;
 
+    // 触发设置变更事件
+    public static void TriggerSettingChanged(SettingType type, float value)
+    {
+        OnSettingChanged?.Invoke(null, new SettingChangedEventArgs(type, value));
+    }
+
+    public static void TriggerSettingChanged(SettingType type, int value)
+    {
+        OnSettingChanged?.Invoke(null, new SettingChangedEventArgs(type, value));
+    }
+
+    private static event Action _onESCPressed;
+    public static event Action OnESCPressed
+    {
+        add => _onESCPressed += value;
+        remove => _onESCPressed -= value;
+    }
+    public static void CallTriggerESCPressed()
+    {
+        // 检查是否有订阅者
+        if (_onESCPressed == null)
+        {
+            Debug.LogWarning("OnESCPressed 事件没有订阅者！");
+            return;
+        }
+        _onESCPressed.Invoke(); // 执行事件
+    }
+
+    private static event Action _onOpenSettings;
+    public static event Action OnOpenSettings
+    {
+        add => _onOpenSettings += value;
+        remove => _onOpenSettings -= value;
+    }
+    public static void CallOpenSettings()
+    {
+        // 检查是否有订阅者
+        if (_onOpenSettings == null)
+        {
+            Debug.LogWarning("OnOpenSettings 事件没有订阅者！");
+            return;
+        }
+        _onOpenSettings.Invoke(); // 执行事件
+    }
+
+    private static event Action _onTalkFinished;
     public static event Action OnTalkFinished
     {
         add => _onTalkFinished += value;
         remove => _onTalkFinished -= value;
     }
-
     // 提供内部触发方法（仅允许指定类触发）
-    public static void TriggerTalkFinished()
+    public static void CallTriggerTalkFinished()
     {
         // 检查是否有订阅者
         if (_onTalkFinished == null)

@@ -17,12 +17,20 @@ public class InventoryItem : MonoBehaviour
         descriptionObj.SetActive(false); // 初始隐藏描述对象
         player = GameObject.FindGameObjectWithTag("Player");
     }
-    private void Start()
+    private void OnEnable()
     {
         EventDefine.ShowDescriptionEvent += ShowDescription;
         EventDefine.UseItemEvent += UseItem; // 订阅使用物品事件
     }
-
+    private void Start()
+    {
+        
+    }
+    private void OnDisable()
+    {
+        EventDefine.ShowDescriptionEvent -= ShowDescription;
+        EventDefine.UseItemEvent -= UseItem; // 取消订阅使用物品事件
+    }
 
     /// <summary>
     /// 执行事件逻辑
@@ -101,7 +109,7 @@ public class InventoryItem : MonoBehaviour
     private void SummonItem(ShopItem item)
     {
         GameObject gameObject = item.summonObj;
-        Vector3 offset = new Vector3(4, 0,0); // 偏移量
+        Vector3 offset = new Vector3(5, 0,0); // 偏移量
         gameObject = Instantiate(gameObject, player.transform.position+offset, Quaternion.identity);
     }
 }

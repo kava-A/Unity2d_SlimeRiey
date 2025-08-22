@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
             if (talkFinished)
             {
                 // ´¥·¢ÊÂ¼þ
-                EventDefine.TriggerTalkFinished();
+                EventDefine.CallTriggerTalkFinished();
             }
         }
     }

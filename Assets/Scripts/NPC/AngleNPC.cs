@@ -14,7 +14,7 @@ public class AngleNPC : NPCBasic
     {
         // 订阅事件（在启用时注册）
         // 订阅前先取消订阅（防止重复订阅）
-        EventDefine.OnTalkFinished -= OnTalkFinishedHandler;
+        //EventDefine.OnTalkFinished -= OnTalkFinishedHandler;
         EventDefine.OnTalkFinished += OnTalkFinishedHandler;
     }
     void OnDisable()
