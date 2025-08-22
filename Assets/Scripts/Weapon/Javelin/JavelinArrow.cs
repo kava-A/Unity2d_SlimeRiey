@@ -34,7 +34,7 @@ public class JavelinArrow : Weapon
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && !hasDamage && polygonCollider2.enabled)
+        if (collision.CompareTag("Enemy") && !hasDamage && polygonCollider2.enabled)//避免多次伤害同一敌人
         {
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
@@ -46,6 +46,10 @@ public class JavelinArrow : Weapon
             }
         }
     }
+    /// <summary>
+    /// 允许标枪插在物体上
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
 

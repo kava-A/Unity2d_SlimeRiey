@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: New Item
   m_EditorClassIdentifier: 
   id: 1003
-  itemName: "\u521D\u7EA7\u56DE\u590D\u836F\u6C34"
-  description: "\u63D0\u4F9B15\u70B9\u6CBB\u7597\u91CF"
+  itemName: "\u82F9\u679C"
+  description: "\u4E00\u5929\u4E00\u82F9\u679C\uFF0C\u533B\u751F\u8FDC\u79BB\u6211\u3002\u6062\u590D15\u70B9\u8840\u91CF"
   price: 15
   maxStack: 9999
   type: 0
-  icon: {fileID: 21300000, guid: 7e84ad18ee0ba6f408407c60460e5e4d, type: 3}
+  icon: {fileID: -1542772193, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   isBuyable: 1
   value: 15
   summonObj: {fileID: 0}

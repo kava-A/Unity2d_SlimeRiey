@@ -26,6 +26,14 @@ public class ShopManager : MonoBehaviour
     public Button[] shopButtons;
 
     private Dictionary<string, ShopItem> itemDict = new Dictionary<string, ShopItem>();
+    private void OnEnable()
+    {
+        EventDefine.BuyItemEvent += BuyItem;//Step3 订阅事件
+    }
+    private void OnDisable()
+    {
+        EventDefine.BuyItemEvent -= BuyItem;//Step3 取消订阅事件
+    }
     private void Start()
     {
         foreach (var item in shopItems)
@@ -37,7 +45,7 @@ public class ShopManager : MonoBehaviour
 
             itemDict.Add(item.id, item);
         }
-        EventDefine.BuyItemEvent += BuyItem;//Step3 订阅事件
+        
         foreach (var button in shopButtons)
         {
             
