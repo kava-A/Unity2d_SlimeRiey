@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+<<<<<<< HEAD
 /// <summary>
 /// 小型敌人自带巡逻，只要玩家不对它造成伤害，它就会一直巡逻
 /// </summary>
@@ -86,6 +87,15 @@ public class BlackEnemy : Enemy
         targetPosition = new Vector2(randomX, transform.position.y);
     }
 
+=======
+public class BlackEnemy : Enemy
+{
+    private float lr;//用于计算与玩家的横向坐标，判断处于玩家的左右
+    private void Start()
+    {
+        StartCoroutine(EnemyMove());
+    }
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     IEnumerator EnemyMove()
     {
         //持续移动，每隔1秒跳跃一次
@@ -99,6 +109,7 @@ public class BlackEnemy : Enemy
             yield return new WaitForSeconds(1f);
         }
     }
+<<<<<<< HEAD
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
@@ -106,6 +117,20 @@ public class BlackEnemy : Enemy
         getHert = true;
 
         StartCoroutine(EnemyMove());
+=======
+    private void Update()
+    {
+        lr = transform.position.x - player.transform.position.x;//计算玩家与自身的横向坐标
+        //通过横向坐标判断朝向
+        if (lr < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
     /// <summary>
     /// 敌人死亡
@@ -114,6 +139,7 @@ public class BlackEnemy : Enemy
     protected override void Dead()
     {
         base.Dead();
+<<<<<<< HEAD
         
         getHert = false;
         
@@ -122,5 +148,10 @@ public class BlackEnemy : Enemy
     private void OnDestroy()
     {
         StopCoroutine(EnemyMove());
+=======
+        StopCoroutine(EnemyMove());
+        gameObject.SetActive(false);
+        
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 }

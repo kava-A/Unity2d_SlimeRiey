@@ -83,7 +83,11 @@ SpriteRenderer:
   m_Size: {x: 0.34375, y: 0.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &8288049934298222141
@@ -136,7 +140,10 @@ MonoBehaviour:
   uid: 1001
   index: 1
   itemName: "\u53E3\u6C34"
+<<<<<<< HEAD
   canRotate: 0
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   rotateSpeed: 180
 --- !u!1 &9164577815767526928
 GameObject:
@@ -152,7 +159,11 @@ GameObject:
   - component: {fileID: 8654831109464237227}
   m_Layer: 0
   m_Name: NPC_Angle
+<<<<<<< HEAD
   m_TagString: NPC
+=======
+  m_TagString: Untagged
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,4 +301,7 @@ MonoBehaviour:
   - "\u5728\u8FD9\u4E2A\u4E16\u754C\u6CA1\u6709\u529B\u91CF\u662F\u76F8\u5F53\u5371\u9669\u7684"
   - "\u56E0\u6B64\u6211\u5C06\u8D50\u4E88\u4F60\u5410\u606F\u7684\u80FD\u529B\uFF0C\u8BF7\u6536\u4E0B"
   specialItem: {fileID: 3881730180239764209}
+<<<<<<< HEAD
   shopTalkContents: []
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892

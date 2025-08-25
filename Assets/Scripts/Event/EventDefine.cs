@@ -81,14 +81,23 @@ public static class EventDefine
         _onOpenSettings.Invoke(); // 执行事件
     }
 
+<<<<<<< HEAD
     private static event Action<NPCBasic> _onTalkFinished;
     public static event Action<NPCBasic> OnTalkFinished
+=======
+    private static event Action _onTalkFinished;
+    public static event Action OnTalkFinished
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     {
         add => _onTalkFinished += value;
         remove => _onTalkFinished -= value;
     }
     // 提供内部触发方法（仅允许指定类触发）
+<<<<<<< HEAD
     public static void CallTriggerTalkFinished(NPCBasic npc)
+=======
+    public static void CallTriggerTalkFinished()
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     {
         // 检查是否有订阅者
         if (_onTalkFinished == null)
@@ -96,20 +105,33 @@ public static class EventDefine
             Debug.LogWarning("OnTalkFinished 事件没有订阅者！");
             return;
         }
+<<<<<<< HEAD
         _onTalkFinished.Invoke( npc);//执行事件
+=======
+        _onTalkFinished.Invoke();//执行事件
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 
 
     // Step1 定义物品购买事件
+<<<<<<< HEAD
     public static event Action<Button> OnBuyItemEvent;
     public static void CallBuyItemEvent(Button clickedButton)
     {
         // 检查是否有订阅者
         if (OnBuyItemEvent == null)
+=======
+    public static event Action<Button> BuyItemEvent;
+    public static void CallBuyItemEvent(Button clickedButton)
+    {
+        // 检查是否有订阅者
+        if (BuyItemEvent == null)
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         {
             Debug.LogWarning("BuyItemEvent 事件没有订阅者！");
             return;
         }
+<<<<<<< HEAD
         OnBuyItemEvent.Invoke(clickedButton); // 执行事件
     }
 
@@ -119,10 +141,22 @@ public static class EventDefine
     {
         // 检查是否有订阅者
         if (OnShowDescriptionEvent == null)
+=======
+        BuyItemEvent.Invoke(clickedButton); // 执行事件
+    }
+
+    //定义显示物品描述事件
+    public static event Action<InventoryItem> ShowDescriptionEvent;
+    public static void CallShowDescriptionEvent(InventoryItem clicked)
+    {
+        // 检查是否有订阅者
+        if (ShowDescriptionEvent == null)
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         {
             Debug.LogWarning("ShowDescriptionEvent 事件没有订阅者！");
             return;
         }
+<<<<<<< HEAD
         OnShowDescriptionEvent.Invoke(clicked); // 执行事件
     }
 
@@ -132,10 +166,22 @@ public static class EventDefine
     {
         // 检查是否有订阅者
         if (OnUseItemEvent == null)
+=======
+        ShowDescriptionEvent.Invoke(clicked); // 执行事件
+    }
+
+    //定义使用物品事件
+    public static event Action<InventoryItem> UseItemEvent;
+    public static void CallUseItemEvent(InventoryItem clicked)
+    {
+        // 检查是否有订阅者
+        if (UseItemEvent == null)
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         {
             Debug.LogWarning("UseItemEvent 事件没有订阅者！");
             return;
         }
+<<<<<<< HEAD
         OnUseItemEvent.Invoke(clicked); // 执行事件
     }
 
@@ -150,5 +196,8 @@ public static class EventDefine
             return;
         }
         OnPlayerChooseEvent.Invoke(choose); // 执行事件
+=======
+        UseItemEvent.Invoke(clicked); // 执行事件
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 /// <summary>
 /// 口水子弹
+<<<<<<< HEAD
 /// 不会与玩家、NPC、武器进行碰撞检测
 /// 撞击到敌人和其他物品会销毁
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 /// </summary>
 public class BulletSpit : Weapon
 {
@@ -36,12 +39,17 @@ public class BulletSpit : Weapon
 
             Destroy(gameObject);
         }
+<<<<<<< HEAD
         else if (!collision.CompareTag("Player")&&!collision.CompareTag("NPC")&&!collision.CompareTag("Weapon"))
+=======
+        else if (!collision.CompareTag("Player"))
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         {
             Destroy(gameObject);
 
         }
     }
+<<<<<<< HEAD
     private void OnDisable()
     {
         effect[index].SetActive(false);
@@ -49,11 +57,19 @@ public class BulletSpit : Weapon
         go.transform.rotation = Quaternion.identity;//不旋转
         go.SetActive(true);
     }
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     /// <summary>
     /// 当游戏物体销毁时启用爆炸特效
     /// </summary>
     private void OnDestroy()
     {
+<<<<<<< HEAD
         
+=======
+        go.transform.position = transform.position;//设置爆炸特效坐标
+        go.transform.rotation = Quaternion.identity;//不旋转
+        go.SetActive(true);
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 }

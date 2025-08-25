@@ -12,7 +12,11 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
+<<<<<<< HEAD
   companyName: YZoneGame
+=======
+  companyName: OLOGame
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   productName: SlimeRiey
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -140,7 +144,11 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
+<<<<<<< HEAD
   bundleVersion: 0.0.2
+=======
+  bundleVersion: 0.0.1
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0

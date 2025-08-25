@@ -71,7 +71,10 @@ public class GameManager : MonoBehaviour
         // 每帧检测ESC键是否被按下
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+<<<<<<< HEAD
             Debug.Log("ESC键被按下，触发事件");
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
             // 触发ESC事件
             EventDefine.CallTriggerESCPressed();
         }
@@ -90,7 +93,10 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateCoinText()
     {
+<<<<<<< HEAD
         if(coinText == null) return;
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         coinText.text = "金币: " + coinCount.ToString();
     }
 

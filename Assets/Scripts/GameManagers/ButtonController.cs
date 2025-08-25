@@ -7,7 +7,10 @@ using UnityEngine.UI;
 public class ButtonController : MonoBehaviour
 {
     /// <summary>
+<<<<<<< HEAD
     /// 购买物品点击
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     /// Step2 点击后调用事件方法
     /// </summary>
     /// <param name="clickedButton">点击的按钮对象，作为事件参数传递</param>
@@ -17,22 +20,31 @@ public class ButtonController : MonoBehaviour
         EventDefine.CallBuyItemEvent(clickedButton);
     }
 
+<<<<<<< HEAD
     /// <summary>
     /// 物品描述点击
     /// </summary>
     /// <param name="clicked">点击的物品对象</param>
+=======
+
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     public void OnShowDescriptionClicked(InventoryItem clicked)
     {
         EventDefine.CallShowDescriptionEvent(clicked);
     }
+<<<<<<< HEAD
     /// <summary>
     /// 使用物品点击
     /// </summary>
     /// <param name="clicked">物品对象</param>
+=======
+
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     public void OnUseItemClicked(InventoryItem clicked)
     {
         EventDefine.CallUseItemEvent(clicked);
     }
+<<<<<<< HEAD
 
     /// <summary>
     /// 玩家选择接受
@@ -49,6 +61,8 @@ public class ButtonController : MonoBehaviour
         EventDefine.CallPlayerChooseEvent(false);
     }
 
+=======
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     public void ResumeGame()
     {
         if (Time.timeScale == 0)

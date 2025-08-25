@@ -118,6 +118,7 @@ public class BossEnemy : Enemy
     {
         base.Dead();
         isDead = true;
+<<<<<<< HEAD
         
         gameObject.SetActive(false);
     }
@@ -125,4 +126,9 @@ public class BossEnemy : Enemy
     {
         StopAllCoroutines();
     }
+=======
+        StopCoroutine(EnemyMove());
+        gameObject.SetActive(false);
+    }
+>>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 }
