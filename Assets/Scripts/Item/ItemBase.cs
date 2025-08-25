@@ -7,6 +7,9 @@ public class ItemBase : MonoBehaviour
     [SerializeField] private int uid;
     [SerializeField] private int index;
     [SerializeField] private string itemName;
+
+    [SerializeField] private bool isSpecialWeapon = false; // 是否为特殊武器
+
     private GameObject player;
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,6 +22,15 @@ public class ItemBase : MonoBehaviour
     }
     private void ActivateItem()
     {
-        player.GetComponent<WeaponController>().GetWeaponIndex(index);
+        if (isSpecialWeapon)
+        {
+            // 激活特殊武器
+            player.GetComponent<WeaponController>().SpcialWeapon();
+            return;
+        }
+        else
+        {
+            player.GetComponent<WeaponController>().UnlockAndActivateWeapon(index);//常规武器激活
+        }
     }
 }

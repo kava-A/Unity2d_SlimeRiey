@@ -20,7 +20,7 @@ public class PoolManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
 
             // 创建对象池父节点
             poolParent = new GameObject("ObjectPools").transform;

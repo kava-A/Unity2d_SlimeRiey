@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject shopPanel;
 
     private Coroutine talkCoroutine; // 保存协程引用
+    private NPCBasic currentTalkingNPC;//记录说话NPC
 
     private bool isDisplaying = false;// 是否正在显示文本
     private bool talkFinished = false;
@@ -37,7 +38,7 @@ public class UIManager : MonoBehaviour
             if (talkFinished)
             {
                 // 触发事件
-                EventDefine.CallTriggerTalkFinished();
+                EventDefine.CallTriggerTalkFinished(currentTalkingNPC);
             }
         }
     }
@@ -53,8 +54,9 @@ public class UIManager : MonoBehaviour
         talkContent.color = talkerName.color;
         talkContent.text = "";
     }
-    public void SetTalkContent(string name, string[] contents)
+    public void SetTalkContent(NPCBasic npc,string name, string[] contents)
     {
+        currentTalkingNPC = npc;
         if (talkPanel == null || talkerName == null || talkContent == null)
         {
             Debug.LogError("UI组件未赋值！");
@@ -94,6 +96,7 @@ public class UIManager : MonoBehaviour
         if (!talkFinished) // 仅在状态变化时触发
         {
             TalkFinished = true;
+            EventDefine.CallTriggerTalkFinished(currentTalkingNPC);
         }
         isDisplaying = false;
         talkPanel.SetActive(false); // 隐藏对话框
@@ -101,7 +104,6 @@ public class UIManager : MonoBehaviour
 
     public void OpenShopPanel(string name)
     {
-        
         shopPanel.SetActive(true);
     }
     public void CloseShopPanel()
@@ -111,5 +113,10 @@ public class UIManager : MonoBehaviour
         talkerName.enabled = false;
         talkContent.enabled = false;
         talkContent.text = "";
+        StopCoroutine(DisplayLinesCoroutine(new string[] { }));//停止显示文本协程
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

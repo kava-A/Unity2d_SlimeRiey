@@ -9,7 +9,10 @@ public class FootCollision : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().TakeDamage(damage);
+            Enemy enemy=collision.GetComponent<Enemy>();
+            if(enemy==null)//防止敌人死亡时脚本报错
+                return;
+            enemy.TakeDamage(damage);
         }
     }
 }

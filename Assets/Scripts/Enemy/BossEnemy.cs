@@ -118,7 +118,11 @@ public class BossEnemy : Enemy
     {
         base.Dead();
         isDead = true;
-        StopCoroutine(EnemyMove());
+        
         gameObject.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

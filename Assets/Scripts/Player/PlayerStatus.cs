@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +13,27 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [Tooltip("最大血量")] public float maxHealth;
     [Tooltip("每秒回血值")] public float healthRegen;
 
+
+    private int allStatusM=1;//状态总加成倍率
+    public int AllStatusM { get => allStatusM; set => allStatusM = value; }
+
+    private TextMeshProUGUI hpText;
     private void Start()
     {
+        hpText = hpSlider.GetComponentInChildren<TextMeshProUGUI>();
         currenthealth = maxHealth;
+        GetParcentage();
+    }
+    public void ChangeMaxHealth(int value)
+    {
+        
+        maxHealth = maxHealth/value;
+        currenthealth = currenthealth/value;
         GetParcentage();
     }
     private void Update()
     {
-        Healing(healthRegen * Time.deltaTime);
+        Healing(healthRegen*allStatusM * Time.deltaTime);
     }
     /// <summary>
     /// 自愈
@@ -48,6 +62,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public void GetParcentage()
     {
         hpSlider.value = currenthealth / maxHealth;
+        hpText.text = currenthealth.ToString("F1");
     }
 
     /// <summary>
@@ -56,7 +71,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     /// <param name="amount">伤害值</param>
     public void TakeDamage(float amount)
     {
-        currenthealth = Mathf.Max(currenthealth - amount, 0);//玩家血量将不会低于0
+        currenthealth = Mathf.Max(currenthealth - amount*allStatusM, 0);//玩家血量将不会低于0
 
         GetParcentage();
     }

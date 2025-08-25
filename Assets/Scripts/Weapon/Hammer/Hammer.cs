@@ -25,6 +25,8 @@ public class Hammer : Weapon
         if (collision.CompareTag("Enemy"))
         {
             Enemy enemy= collision.GetComponent<Enemy>();
+            if(enemy==null)
+                return;
             enemy.TakeDamage(damage);
             enemy.Freeze();
 

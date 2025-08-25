@@ -28,11 +28,11 @@ public class ShopManager : MonoBehaviour
     private Dictionary<string, ShopItem> itemDict = new Dictionary<string, ShopItem>();
     private void OnEnable()
     {
-        EventDefine.BuyItemEvent += BuyItem;//Step3 订阅事件
+        EventDefine.OnBuyItemEvent += BuyItem;//Step3 订阅事件
     }
     private void OnDisable()
     {
-        EventDefine.BuyItemEvent -= BuyItem;//Step3 取消订阅事件
+        EventDefine.OnBuyItemEvent -= BuyItem;//Step3 取消订阅事件
     }
     private void Start()
     {

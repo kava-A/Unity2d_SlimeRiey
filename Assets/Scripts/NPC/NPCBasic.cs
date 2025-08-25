@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class NPCBasic : MonoBehaviour
 {
-   [SerializeField] protected string npcName;
-   [SerializeField] protected NPCType npcType;
-   [SerializeField] protected List<string> talkContents; //对话内容
+    [SerializeField] protected string npcName;
+    [SerializeField] protected NPCType npcType;
+    [SerializeField] protected List<string> talkContents; //对话内容
     protected bool canTalk = false;
-    protected bool isInteract = false; 
+    protected bool isInteract = false;
     private GameObject player;
 
     private void Awake()
@@ -38,7 +38,7 @@ public class NPCBasic : MonoBehaviour
             isInteract = false;
         }
     }
-    
+
 }
 public enum NPCType
 {
