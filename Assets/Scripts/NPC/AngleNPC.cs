@@ -28,7 +28,6 @@ public class AngleNPC : NPCBasic
 
         if (isInteract && canTalk)
         {
-<<<<<<< HEAD
             UIManager.Instance.SetTalkContent(this,npcName,
                 isFirstTalk ? talkContents.ToArray() : shopTalkContents);//判断是否初次对话，传入不同的对话内容
         }
@@ -36,14 +35,6 @@ public class AngleNPC : NPCBasic
     private void OnTalkFinishedHandler(NPCBasic sender)
     {
         if (sender != this) return;//只处理自己的事件
-=======
-            UIManager.Instance.SetTalkContent(npcName,
-                isFirstTalk ? talkContents.ToArray() : shopTalkContents);//判断是否初次对话，传入不同的对话内容
-        }
-    }
-    private void OnTalkFinishedHandler()
-    {
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         if (isFirstTalk)
         {
             Instantiate(specialItem, transform.position, Quaternion.identity);
@@ -58,11 +49,7 @@ public class AngleNPC : NPCBasic
             UIManager.Instance.OpenShopPanel(npcName);
         }
     }
-<<<<<<< HEAD
     void OnTriggerStay2D(Collider2D collision)
-=======
-    void OnTriggerEnter2D(Collider2D collision)
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     {
         if (collision.CompareTag("Player"))
         {
@@ -87,12 +74,8 @@ public class AngleNPC : NPCBasic
             }
         }
     }
-<<<<<<< HEAD
     private void OnDestroy()
     {
         StopAllCoroutines();
     }
-=======
-
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 }

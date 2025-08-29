@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using TMPro;
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,9 +13,8 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     [Tooltip("最大血量")] public float maxHealth;
     [Tooltip("每秒回血值")] public float healthRegen;
 
-<<<<<<< HEAD
 
-    private int allStatusM=1;//状态总加成倍率
+    private int allStatusM = 1;//状态总加成倍率
     public int AllStatusM { get => allStatusM; set => allStatusM = value; }
 
     private TextMeshProUGUI hpText;
@@ -30,24 +26,14 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     }
     public void ChangeMaxHealth(int value)
     {
-        
-        maxHealth = maxHealth/value;
-        currenthealth = currenthealth/value;
+
+        maxHealth = maxHealth / value;
+        currenthealth = currenthealth / value;
         GetParcentage();
     }
     private void Update()
     {
-        Healing(healthRegen*allStatusM * Time.deltaTime);
-=======
-    private void Start()
-    {
-        currenthealth = maxHealth;
-        GetParcentage();
-    }
-    private void Update()
-    {
-        Healing(healthRegen * Time.deltaTime);
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
+        Healing(healthRegen * allStatusM * Time.deltaTime);
     }
     /// <summary>
     /// 自愈
@@ -76,10 +62,7 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     public void GetParcentage()
     {
         hpSlider.value = currenthealth / maxHealth;
-<<<<<<< HEAD
         hpText.text = currenthealth.ToString("F1");
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 
     /// <summary>
@@ -88,12 +71,14 @@ public class PlayerStatus : MonoBehaviour, IDamageable
     /// <param name="amount">伤害值</param>
     public void TakeDamage(float amount)
     {
-<<<<<<< HEAD
-        currenthealth = Mathf.Max(currenthealth - amount*allStatusM, 0);//玩家血量将不会低于0
-=======
-        currenthealth = Mathf.Max(currenthealth - amount, 0);//玩家血量将不会低于0
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
+        currenthealth = Mathf.Max(currenthealth - amount * allStatusM, 0);//玩家血量将不会低于0
 
         GetParcentage();
+        if (currenthealth <= 0)
+        {
+            GameManager.Instance.DeLifeCount(1);
+            currenthealth = maxHealth;
+        }
     }
+
 }

@@ -177,12 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b8324a695f8484cb418353e4021344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   moveSpeed: 15
-  jumpForce: 20
+  jumpForce: 25
   collisionDamage: 10
   killCount: 1
-  enemyPrice: 10
+  enemyPrice: 8
   player: {fileID: 0}
   patrolRange: 20
   waitTime: 1

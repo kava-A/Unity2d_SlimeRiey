@@ -12,7 +12,7 @@ public class BossEnemy : Enemy
     private float lr;//用于计算与玩家的横向坐标，判断处于玩家的左右
     private bool isDead;
     private Coroutine moveCoroutine;//保存移动协程的引用
-    private void Start()
+    private void OnEnable()
     {
 
         PoolManager.Instance.InitPool(bulletPrefab, bulletCount);
@@ -118,7 +118,6 @@ public class BossEnemy : Enemy
     {
         base.Dead();
         isDead = true;
-<<<<<<< HEAD
         
         gameObject.SetActive(false);
     }
@@ -126,9 +125,4 @@ public class BossEnemy : Enemy
     {
         StopAllCoroutines();
     }
-=======
-        StopCoroutine(EnemyMove());
-        gameObject.SetActive(false);
-    }
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 }

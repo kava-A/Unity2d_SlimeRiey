@@ -5,7 +5,6 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private List<GameObject> weapons = new List<GameObject>();
-<<<<<<< HEAD
     [SerializeField] private GameObject specialWeapon; // 特殊武器对象
     [SerializeField] private List<bool> weaponUnlockedStates = new List<bool>();
     private bool isActivateSpecialWeapon = false; // 是否激活特殊武器
@@ -62,23 +61,12 @@ public class WeaponController : MonoBehaviour
         {
             SwitchToPreviousWeapon();
         }
-=======
-
-    private int currentWeaponIndex = -1;
-    private void Start()
-    {
-        //开局禁用所有武器
-        DisableOtherWeapon();
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
     private void DisableOtherWeapon()
     {
         foreach (GameObject weapon in weapons)
         {
-<<<<<<< HEAD
             if(weapon != null) 
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
             weapon.SetActive(false);
         }
     }
@@ -86,7 +74,6 @@ public class WeaponController : MonoBehaviour
     /// 外部调用激活武器
     /// </summary>
     /// <param name="index">武器对象索引</param>
-<<<<<<< HEAD
     public void UnlockAndActivateWeapon(int index)
     {
         if(index < 0 || index >= weapons.Count)
@@ -141,30 +128,10 @@ public class WeaponController : MonoBehaviour
                 return;
             }
         }
-=======
-    public void GetWeaponIndex(int index)
-    {
-        ActivateWeapon(index);
-    }
-    private void Update()
-    {
-        //if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-        //{
-        //    currentWeaponIndex -= 1;
-        //}
-        //else if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-        //{
-        //    currentWeaponIndex += 1;
-        //}
-        currentWeaponIndex = Mathf.Clamp(currentWeaponIndex, 0, weapons.Count - 1);//限制武器索引范围在0到武器数量-1之间
-        ActivateWeapon(currentWeaponIndex);
-
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 
     private void ActivateWeapon(int index)
     {
-<<<<<<< HEAD
         GameObject targetWeapon = weapons[index];
         if (targetWeapon == null)
         {
@@ -213,12 +180,5 @@ public class WeaponController : MonoBehaviour
             return false;
 
         return weaponUnlockedStates[index];
-=======
-        if (weapons[index] == null && weapons[index].activeSelf)
-        {
-            return;
-        }
-        weapons[index].SetActive(true);
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 }

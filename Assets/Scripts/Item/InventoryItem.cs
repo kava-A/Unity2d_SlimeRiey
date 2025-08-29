@@ -19,13 +19,8 @@ public class InventoryItem : MonoBehaviour
     }
     private void OnEnable()
     {
-<<<<<<< HEAD
         EventDefine.OnShowDescriptionEvent += ShowDescription;
         EventDefine.OnUseItemEvent += UseItem; // 订阅使用物品事件
-=======
-        EventDefine.ShowDescriptionEvent += ShowDescription;
-        EventDefine.UseItemEvent += UseItem; // 订阅使用物品事件
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
     private void Start()
     {
@@ -33,13 +28,8 @@ public class InventoryItem : MonoBehaviour
     }
     private void OnDisable()
     {
-<<<<<<< HEAD
         EventDefine.OnShowDescriptionEvent -= ShowDescription;
         EventDefine.OnUseItemEvent -= UseItem; // 取消订阅使用物品事件
-=======
-        EventDefine.ShowDescriptionEvent -= ShowDescription;
-        EventDefine.UseItemEvent -= UseItem; // 取消订阅使用物品事件
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 
     /// <summary>

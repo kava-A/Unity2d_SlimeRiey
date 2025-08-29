@@ -6,10 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Weapon
-<<<<<<< HEAD
   - NPC
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   layers:
   - Default
   - TransparentFX

@@ -26,10 +26,7 @@ public class UIManager : MonoBehaviour
     public GameObject shopPanel;
 
     private Coroutine talkCoroutine; // 保存协程引用
-<<<<<<< HEAD
     private NPCBasic currentTalkingNPC;//记录说话NPC
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
 
     private bool isDisplaying = false;// 是否正在显示文本
     private bool talkFinished = false;
@@ -41,11 +38,7 @@ public class UIManager : MonoBehaviour
             if (talkFinished)
             {
                 // 触发事件
-<<<<<<< HEAD
                 EventDefine.CallTriggerTalkFinished(currentTalkingNPC);
-=======
-                EventDefine.CallTriggerTalkFinished();
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
             }
         }
     }
@@ -61,14 +54,9 @@ public class UIManager : MonoBehaviour
         talkContent.color = talkerName.color;
         talkContent.text = "";
     }
-<<<<<<< HEAD
     public void SetTalkContent(NPCBasic npc,string name, string[] contents)
     {
         currentTalkingNPC = npc;
-=======
-    public void SetTalkContent(string name, string[] contents)
-    {
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         if (talkPanel == null || talkerName == null || talkContent == null)
         {
             Debug.LogError("UI组件未赋值！");
@@ -108,10 +96,7 @@ public class UIManager : MonoBehaviour
         if (!talkFinished) // 仅在状态变化时触发
         {
             TalkFinished = true;
-<<<<<<< HEAD
             EventDefine.CallTriggerTalkFinished(currentTalkingNPC);
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         }
         isDisplaying = false;
         talkPanel.SetActive(false); // 隐藏对话框
@@ -119,10 +104,6 @@ public class UIManager : MonoBehaviour
 
     public void OpenShopPanel(string name)
     {
-<<<<<<< HEAD
-=======
-        
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         shopPanel.SetActive(true);
     }
     public void CloseShopPanel()
@@ -132,13 +113,10 @@ public class UIManager : MonoBehaviour
         talkerName.enabled = false;
         talkContent.enabled = false;
         talkContent.text = "";
-<<<<<<< HEAD
         StopCoroutine(DisplayLinesCoroutine(new string[] { }));//停止显示文本协程
     }
     private void OnDestroy()
     {
         StopAllCoroutines();
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     }
 }

@@ -16,11 +16,7 @@ GameObject:
   - component: {fileID: 5611040280160010999}
   m_Layer: 0
   m_Name: Blade
-<<<<<<< HEAD
   m_TagString: Weapon
-=======
-  m_TagString: Untagged
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

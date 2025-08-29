@@ -9,7 +9,6 @@ using UnityEngine.UI;
 /// </summary>
 public class FPSDisplay : MonoBehaviour
 {
-<<<<<<< HEAD
     private Text fpsText;
 
     [SerializeField] private float updateInterval = 0.5f;//更新帧率的频率
@@ -18,16 +17,6 @@ public class FPSDisplay : MonoBehaviour
     private int _frameCount = 0;// 帧数计数
     private float _timeLeft;// 距离下次更新的时间
     private float _fps;// 当前帧率
-=======
-	private Text fpsText;
-
-    [SerializeField]private float updateInterval = 0.5f;//更新帧率的频率
-
-    private float _accumulator = 0f; // 帧数累加器
-    private int _frameCount = 0;     // 帧数计数
-    private float _timeLeft;         // 距离下次更新的时间
-    private float _fps;              // 当前帧率
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
     private void Awake()
     {
         fpsText = GetComponent<Text>();
@@ -38,12 +27,9 @@ public class FPSDisplay : MonoBehaviour
     }
     void Update()
     {
-<<<<<<< HEAD
         if(Time.timeScale==0)//暂停时不计算帧率
             return;
 
-=======
->>>>>>> d8c932a3fe6f110359957261a3bf180bbac9c892
         _timeLeft -= Time.deltaTime;
         _accumulator += Time.timeScale / Time.deltaTime;
         _frameCount++;

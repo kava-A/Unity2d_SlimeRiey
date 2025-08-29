@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uid: 1001
-  index: 0
+  index: -1
   itemName: "\u53E3\u6C34"
   isSpecialWeapon: 1
   canRotate: 1
