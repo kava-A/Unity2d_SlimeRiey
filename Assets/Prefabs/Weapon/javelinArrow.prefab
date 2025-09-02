@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: "\u6807\u67AA"
-  damage: 4
+  damage: 10
   range: 0
   speed: 50
   attackCooldown: 0

@@ -194,7 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponName: "\u5251"
-  damage: 10
+  damage: 15
   range: 0
   speed: 0
   attackCooldown: 0

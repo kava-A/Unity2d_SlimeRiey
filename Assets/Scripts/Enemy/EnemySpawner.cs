@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
         {
             int index = Random.Range(0, spawnPoints.Count);
             SpawnNormalEnemy(spawnPoints[index].position);
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(spawnInterval);
         }
 
     }

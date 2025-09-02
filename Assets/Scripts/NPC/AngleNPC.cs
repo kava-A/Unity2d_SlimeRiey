@@ -55,7 +55,7 @@ public class AngleNPC : NPCBasic
         {
             canTalk = true;
             //¿ªÆôÉÌµê
-            if (!isFirstTalk && shopOpen && !UIManager.Instance.shopPanel.activeSelf)
+            if (!isFirstTalk && shopOpen && !UIManager.Instance.shopPanel.activeSelf&&isInteract)
             {
                 UIManager.Instance.OpenShopPanel(npcName);
             }

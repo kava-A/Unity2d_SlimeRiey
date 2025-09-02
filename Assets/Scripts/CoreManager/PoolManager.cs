@@ -61,7 +61,7 @@ public class PoolManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 从对象池获取对象
+    /// 从对象池获取对象(自动扩容）
     /// </summary>
     /// <param name="prefab">预制体</param>
     /// <returns>对象实例</returns>
