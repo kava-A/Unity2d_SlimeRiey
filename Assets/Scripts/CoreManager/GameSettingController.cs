@@ -27,7 +27,7 @@ public class GameSettingController : MonoBehaviour
     {
         fovSlider.minValue = 20;
         fovSlider.maxValue = 40;
-        audioSlider.minValue = 10;
+        audioSlider.minValue = 0;
         audioSlider.maxValue = 100;
         if (settingPanel != null && settingPanel.activeSelf)
         {
@@ -36,6 +36,7 @@ public class GameSettingController : MonoBehaviour
         fovSlider.onValueChanged.AddListener(OnFOVChanged);
         audioSlider.onValueChanged.AddListener(OnAudioChanged);
         frameDropdown.onValueChanged.AddListener(OnFrameRateChanged);
+        audioSlider.value = 0.5f;
     }
 
     private void OnFOVChanged(float arg0)

@@ -12,7 +12,7 @@ public class BlackEnemy : Enemy
     [Tooltip("到达地点后等待时间")] public float waitTime;
     [Tooltip("目标地点")] private Vector2 targetPosition;
     private float waitTimer;
-
+    private bool isGround;
     private float lr;//用于计算与玩家的横向坐标，判断处于玩家的左右
     private bool getHert = false;//是否受伤
     private void Start()
@@ -43,6 +43,14 @@ public class BlackEnemy : Enemy
         }
 
 
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        isGround = true;
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isGround = false;
     }
     private void FixedUpdate()
     {
@@ -77,7 +85,7 @@ public class BlackEnemy : Enemy
     }
     private void SetRandomTarget()
     {
-        if(getHert==true)
+        if (getHert == true)
         {
             return;
         }
@@ -94,15 +102,18 @@ public class BlackEnemy : Enemy
             Vector2 dir = (player.transform.position - transform.position).normalized;
             rb.velocity = new Vector2(dir.x * moveSpeed, rb.velocity.y);
 
+            if (isGround)
+            {
 
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            }
             yield return new WaitForSeconds(1f);
         }
     }
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-        
+
         getHert = true;
 
         StartCoroutine(EnemyMove());
@@ -114,9 +125,9 @@ public class BlackEnemy : Enemy
     protected override void Dead()
     {
         base.Dead();
-        
+
         getHert = false;
-        
+
         Destroy(gameObject);
     }
     private void OnDestroy()

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -27,10 +28,11 @@ public class GameManager : MonoBehaviour
     public int neetToKill = 10;
     public int lifeCount = 3;
     private int maxLifeCount;
-    [Header("杀敌统计")]
+    [Header("UI")]
     public int killCount = 0; // 杀敌数量
     public int coinCount = 0; // 金币数量
-
+    public TextMeshProUGUI fovText;
+    public TextMeshProUGUI audioText;
     private void Start()
     {
         QualitySettings.vSyncCount = 0; // 关闭垂直同步
@@ -52,10 +54,18 @@ public class GameManager : MonoBehaviour
         switch (e.settingType)
         {
             case SettingType.FOV:
-                // 应用视野设置
-                if (Camera.main != null)
+                CinemachineVirtualCamera virtualCamera = FindObjectOfType<CinemachineVirtualCamera>();
+                if (virtualCamera != null)
                 {
-                    Camera.main.fieldOfView = e.floatValue;
+                    if (virtualCamera.m_Lens.Orthographic == false)
+                    {
+                        virtualCamera.m_Lens.FieldOfView = Mathf.Clamp(e.floatValue, 1f, 179f);
+                    }
+                    else
+                    {
+                        virtualCamera.m_Lens.OrthographicSize = Mathf.Clamp(e.floatValue, 0.1f, 100f);
+                    }
+                    fovText.text = e.floatValue.ToString("F1");
                     Debug.Log($"FOV已设置为：{e.floatValue}");
                 }
                 break;
@@ -64,7 +74,7 @@ public class GameManager : MonoBehaviour
                 // 应用音量设置
                 AudioListener.volume = e.floatValue;
 
-
+                audioText.text = e.floatValue.ToString("F1");
                 Debug.Log($"音量已设置为：{e.floatValue}");
                 break;
 
@@ -113,8 +123,8 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateLifeText()
     {
-        if(lifeText == null) return;
-        lifeText.text= "x" +maxLifeCount.ToString();
+        if (lifeText == null) return;
+        lifeText.text = "x" + maxLifeCount.ToString();
     }
     public void RegisterLifeText(TextMeshProUGUI text)
     {
@@ -124,8 +134,8 @@ public class GameManager : MonoBehaviour
     public void DeLifeCount(int count)
     {
         maxLifeCount -= count;
-        UpdateLifeText() ;
-        if(maxLifeCount <= 0)//生命耗尽，返回主菜单
+        UpdateLifeText();
+        if (maxLifeCount <= 0)//生命耗尽，返回主菜单
         {
             Time.timeScale = 0;
             SceneManager.LoadScene(0);
