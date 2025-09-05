@@ -18,7 +18,7 @@ MonoBehaviour:
   price: 15
   maxStack: 9999
   type: 0
-  icon: {fileID: -1542772193, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
+  icon: {fileID: 21300176, guid: 7810966f0f690954c87305933cabf2b0, type: 3}
   isBuyable: 1
   value: 15
   summonObj: {fileID: 0}
