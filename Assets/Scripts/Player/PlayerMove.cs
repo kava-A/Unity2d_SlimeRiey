@@ -9,33 +9,60 @@ public class PlayerMove : MonoBehaviour
 
     [Header("移动")]
     [SerializeField, Tooltip("移动速度")] public float moveSpeed;
-    [SerializeField, Tooltip("跳跃力")] private float jumpForce;
+    [SerializeField, Tooltip("跳跃力")] private float jumpForce;//正常跳跃力
+    [SerializeField,Tooltip("加速倍率")]private float accelerate = 1.1f;
+    [Header("多段跳设置")]
+    public int jumpMaxCount = 2;
+    public float exForce=70;//二段跳
 
 
     [Tooltip("碰撞接触统计，用于跳跃判定")] private int collisionCount = 0;
     private Animator animator;
     private float inputX;
     private float lastInputX;//记录上次横向输入值
+    private int jumpCount = 0;
+    private float trueMoveSpeed;
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        jumpCount = jumpMaxCount;
+        trueMoveSpeed = moveSpeed;
     }
 
     private void Update()
     {
+        accelerate=Mathf.Clamp(accelerate,1,2);//限制加速度在1-2倍之间
         inputX = Input.GetAxis("Horizontal");
         lastInputX = inputX;
         Walk();
 
         //跳跃
-        if (Input.GetKeyDown(KeyCode.Space) && collisionCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("Jump");
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            if (collisionCount > 0)
+            {
+                animator.SetTrigger("Jump");
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                jumpCount -= 1;
+
+            }
+            else if (jumpCount != 0)
+            {
+                animator.SetTrigger("Jump");
+                rb.velocity = new Vector2(rb.velocity.x, exForce);
+                jumpCount -= 1;
+            }
         }
-
-
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            trueMoveSpeed = moveSpeed*accelerate;
+        }
+        else
+        {
+            trueMoveSpeed = moveSpeed;
+        }
     }
     /// <summary>
     /// 玩家移动
@@ -51,26 +78,24 @@ public class PlayerMove : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        rb.velocity = new Vector2(inputX * moveSpeed, rb.velocity.y);
+        rb.velocity = new Vector2(inputX * trueMoveSpeed, rb.velocity.y);
 
     }
 
     /// <summary>
-    /// 碰撞统计，如果玩家碰撞到了
+    /// 碰撞统计，用于跳跃判定
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.layer == 6)
-        //{
+        collisionCount++;
+        jumpCount = jumpMaxCount;//落地重置跳跃次数
 
-        //}
-            collisionCount++;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-            collisionCount--;
-
+        collisionCount--;
+        
     }
 
 }
