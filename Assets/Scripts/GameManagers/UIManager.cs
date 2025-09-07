@@ -24,6 +24,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI talkContent;
     [Header("商店")]
     public GameObject shopPanel;
+    [Header("背包")]
+    public GameObject backpackPanel;
 
     private Coroutine talkCoroutine; // 保存协程引用
     private NPCBasic currentTalkingNPC;//记录说话NPC

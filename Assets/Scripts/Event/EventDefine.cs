@@ -33,6 +33,12 @@ public class SettingChangedEventArgs : EventArgs
 }
 public static class EventDefine
 {
+    public static event Action<GameObject> OnPlayerSpawned;
+    public static void CallPlayerSpawned(GameObject go)
+    {
+        OnPlayerSpawned?.Invoke(go);
+    }
+
     // 定义设置变更事件（携带设置类型和值）
     public static event EventHandler<SettingChangedEventArgs> OnSettingChanged;
 

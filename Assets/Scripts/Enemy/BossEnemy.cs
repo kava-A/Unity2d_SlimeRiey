@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class BossEnemy : Enemy
 
         PoolManager.Instance.InitPool(bulletPrefab, bulletCount);
 
-        moveCoroutine= StartCoroutine(EnemyMove());
+       
         isDead =false;
     }
     IEnumerator EnemyMove()
@@ -89,6 +90,45 @@ public class BossEnemy : Enemy
     //    }
 
     //}
+
+    /// <summary>
+    /// Boss生成时主动查找玩家（由触发器调用）
+    /// </summary>
+    public void FindPlayerOnSpawn()
+    {
+        // 主动查找场景中已存在的本地玩家
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var p in players)
+        {
+            PhotonView pv = p.GetComponent<PhotonView>();
+            if (pv != null && pv.IsMine) // 只认本地玩家
+            {
+                player = p;
+                Debug.Log("Boss生成后找到本地玩家");
+                // 找到玩家后启动协程
+                if (moveCoroutine == null)
+                {
+                    moveCoroutine = StartCoroutine(EnemyMove());
+                }
+                return;
+            }
+        }
+
+        // 如果没找到，1秒后重试
+        Debug.LogWarning("Boss生成时未找到玩家，1秒后重试");
+        Invoke(nameof(RetryFindPlayer), 1f);
+    }
+
+    /// <summary>
+    /// 重试查找玩家
+    /// </summary>
+    private void RetryFindPlayer()
+    {
+        if (player == null)
+        {
+            FindPlayerOnSpawn(); // 递归重试
+        }
+    }
     public override void Freeze()
     {
         Debug.Log($"{gameObject.name} is frozen");

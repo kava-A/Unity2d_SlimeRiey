@@ -14,11 +14,28 @@ public class NPCBasic : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        EventDefine.OnPlayerSpawned += OnPlayerFound; 
+    }
+        
+   
+    private void OnDestroy()
+    {
+        EventDefine.OnPlayerSpawned -= OnPlayerFound;
+    }
+
+    private void OnPlayerFound(GameObject playerObj)
+    {
+        Debug.Log($"NPC已找到玩家,玩家为{playerObj}");
+        player = playerObj;
     }
     private float lr;//用于计算与玩家的横向坐标，判断处于玩家的左右
     protected virtual void Update()
     {
+        if(player == null) 
+        { 
+            return; 
+        }
+
         lr = transform.position.x - player.transform.position.x;//计算玩家与自身的横向坐标
         //通过横向坐标判断朝向
         if (lr < 0)

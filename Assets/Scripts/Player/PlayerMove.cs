@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerMove : MonoBehaviour
+using Photon.Pun;
+public class PlayerMove : MonoBehaviourPun
 {
     private Rigidbody2D rb;
 
@@ -33,7 +33,8 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
-        accelerate=Mathf.Clamp(accelerate,1,2);//限制加速度在1-2倍之间
+        if(!photonView.IsMine && PhotonNetwork.IsConnected) { return; }//不是本地玩家且联网状态下不执行后续代码
+        accelerate =Mathf.Clamp(accelerate,1,2);//限制加速度在1-2倍之间
         inputX = Input.GetAxis("Horizontal");
         lastInputX = inputX;
         Walk();

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,9 +21,19 @@ public class Enemy : MonoBehaviour, IDamageable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        if(player == null)
+        EventDefine.OnPlayerSpawned += OnPlayerFound;
+    }
+    private void OnDestroy()
+    {
+        EventDefine.OnPlayerSpawned -= OnPlayerFound;
+    }
+    private void OnPlayerFound(GameObject playerObj)
+    {
+        PhotonView pv = playerObj.GetComponent<PhotonView>();
+        if (pv != null && pv.IsMine)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = playerObj;
+            Debug.Log("通过事件更新玩家引用");
         }
     }
     public virtual void Freeze()

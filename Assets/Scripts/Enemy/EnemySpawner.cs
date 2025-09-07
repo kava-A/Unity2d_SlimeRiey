@@ -57,8 +57,8 @@ public class EnemySpawner : MonoBehaviour
     public void BossSpawn(Transform targetPos)
     {
         Debug.Log("Boss生成事件触发");
-        Instantiate(bossEnemy, targetPos.position, Quaternion.identity);
-
+        GameObject boss=  Instantiate(bossEnemy, targetPos.position, Quaternion.identity);
+        boss.GetComponent<BossEnemy>().FindPlayerOnSpawn();
     }
     private void OnDestroy()
     {
