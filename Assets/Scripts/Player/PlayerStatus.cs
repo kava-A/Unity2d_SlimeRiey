@@ -7,25 +7,29 @@ using Photon.Pun;
 
 public class PlayerStatus : MonoBehaviourPun, IDamageable
 {
+    private TextMeshProUGUI playerName;
     [SerializeField, Tooltip("血条UI")] private Slider hpSlider;
 
     [Header("玩家生命值")]
     [Tooltip("当前血量")] public float currenthealth;
     [Tooltip("最大血量")] public float maxHealth;
     [Tooltip("每秒回血值")] public float healthRegen;
-
-
+    Animator animator;
+    private bool canPlayAnim=true;
     private int allStatusM = 1;//状态总加成倍率
     public int AllStatusM { get => allStatusM; set => allStatusM = value; }
 
     private TextMeshProUGUI hpText;
     private void OnEnable()
     {
+        animator = GetComponent<Animator>();
+        playerName =UIManager.Instance.playerNameText;
         if (!photonView.IsMine)
         {
             return;
         }//不是本地玩家且联网状态下不执行后续代码
         FindHPSlider();
+        GeTPlayerName();
     }
     // 查找血条
     private void FindHPSlider()
@@ -52,15 +56,29 @@ public class PlayerStatus : MonoBehaviourPun, IDamageable
             Invoke(nameof(FindHPSlider), 0.5f); // 继续重试
         }
     }
+    private void GeTPlayerName()
+    {
+        string name = photonView.Owner.NickName;
+        if (name != null)
+        {
+            playerName.text = name;
+            
+        }
+        else
+        {
+            playerName.text = "玩家";
+        }
+    }
+
     private void Start()
-    { 
+    {
         // 非本地玩家直接返回
         if (!photonView.IsMine)
         {
             return;
         }
-        
-        
+
+
         currenthealth = maxHealth;
         GetParcentage();
     }
@@ -116,7 +134,12 @@ public class PlayerStatus : MonoBehaviourPun, IDamageable
     public void TakeDamage(float amount)
     {
         currenthealth = Mathf.Max(currenthealth - amount * allStatusM, 0);//玩家血量将不会低于0
-
+        if (canPlayAnim)
+        { 
+            animator.SetTrigger("IsHurt");
+            StartCoroutine(AntiSpawmAnimation());
+        }
+       
         GetParcentage();
         if (currenthealth <= 0)
         {
@@ -124,5 +147,10 @@ public class PlayerStatus : MonoBehaviourPun, IDamageable
             currenthealth = maxHealth;
         }
     }
-
+    IEnumerator AntiSpawmAnimation()
+    {
+        canPlayAnim = false;
+        yield return new WaitForSeconds(0.5f);
+        canPlayAnim = true;
+    }
 }

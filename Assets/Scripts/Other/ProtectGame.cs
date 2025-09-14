@@ -19,7 +19,7 @@ public class ProtectGame : MonoBehaviour
                 collision.gameObject.transform.position = safePoint.position;
                 break;
             case "Enemy":
-                Destroy(collision.gameObject);
+                collision.GetComponent<Enemy>().TakeDamage(9999999);
                 break;
             default:
                 

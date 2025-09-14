@@ -20,7 +20,10 @@ public class BlackEnemy : Enemy
         getHert = false;
         SetRandomTarget();
     }
-
+    private void OnEnable()
+    {
+        FindLocalPlayer();
+    }
     private void Update()
     {
         if (getHert == false)
@@ -29,7 +32,7 @@ public class BlackEnemy : Enemy
         }
         else
         {
-
+            
             lr = transform.position.x - player.transform.position.x;//计算玩家与自身的横向坐标
         }
         //通过横向坐标判断朝向
@@ -113,10 +116,13 @@ public class BlackEnemy : Enemy
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-
+        if (player == null)
+        {
+            Debug.LogWarning("BlackEnemy：受伤时player为空");
+            return;
+        }
         getHert = true;
-
-        StartCoroutine(EnemyMove());
+        if(getHert) StartCoroutine(EnemyMove());
     }
     /// <summary>
     /// 敌人死亡
@@ -128,7 +134,7 @@ public class BlackEnemy : Enemy
 
         getHert = false;
 
-        Destroy(gameObject);
+       PoolManager.Instance.ReturnObject(gameObject,gameObject);
     }
     private void OnDestroy()
     {

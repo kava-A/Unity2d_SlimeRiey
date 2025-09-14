@@ -36,6 +36,25 @@ public class Enemy : MonoBehaviour, IDamageable
             Debug.Log("通过事件更新玩家引用");
         }
     }
+    /// <summary>
+    /// 主动寻找本地玩家
+    /// </summary>
+    protected void FindLocalPlayer()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var p in players)
+        {
+            PhotonView pv = p.GetComponent<PhotonView>();
+            if (pv != null && pv.IsMine) // 只认本地玩家
+            {
+                player = p;
+                Debug.Log($"{gameObject.name} 主动找到本地玩家");
+                return;
+            }
+        }
+        Debug.LogWarning($"{gameObject.name} 主动查找玩家失败，1秒后重试");
+        Invoke(nameof(FindLocalPlayer), 1f); // 重试机制
+    }
     public virtual void Freeze()
     {
 

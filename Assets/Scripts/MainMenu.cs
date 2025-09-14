@@ -18,8 +18,8 @@ public class MainMenu : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_WEBGL
-        // 在WebGL中无法直接退出，可跳转到其他页面或显示提示
-        Application.OpenURL("about:blank"); // 或跳转到指定URL
+        // 在WebGL中无法直接退出，跳转到其他页面
+        Application.OpenURL("www.baidu.com"); 
 #else
         Application.Quit();
 #endif

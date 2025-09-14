@@ -5,6 +5,11 @@ using Photon.Pun;
 
 public class Launcher : MonoBehaviourPunCallbacks
 {
+    //private void Start()
+    //{
+    //    GameObject player = PhotonNetwork.Instantiate("Player", new Vector3(-1.2f, -4.26f, 0), Quaternion.identity, 0);
+    //    EventDefine.CallPlayerSpawned(player);
+    //}
     private void Start()
     {
         PhotonNetwork.ConnectUsingSettings();//连接服务器
